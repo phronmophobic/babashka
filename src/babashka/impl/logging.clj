@@ -113,7 +113,8 @@
          'log! (sci/copy-var log! tns)
          '*config* config
          'swap-config! (sci/copy-var swap-config! tns)
-         'set-level! (sci/copy-var set-level! tns)))
+         'set-level! (sci/copy-var set-level! tns)
+         'println-appender (sci/copy-var println-appender tns)))
 
 ;;;; clojure.tools.logging
 
