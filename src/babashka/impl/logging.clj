@@ -3,7 +3,8 @@
             [clojure.tools.logging.impl :as impl]
             [sci.core :as sci]
             [taoensso.encore :as enc :refer [have]]
-            [taoensso.timbre :as timbre]))
+            [taoensso.timbre :as timbre]
+            [taoensso.timbre.appenders.core :as appenders]))
 
 ;;;; timbre
 
@@ -60,6 +61,8 @@
           (select-keys (ns-publics ns) ks)))
 
 (def config (sci/new-dynamic-var '*config* timbre/*config* {:ns tns}))
+
+(def atomic-println @#'appenders/atomic-println)
 
 (defn swap-config! [f & args]
   (apply sci/alter-var-root config f args))
