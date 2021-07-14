@@ -45,7 +45,7 @@ build_script:
 - cmd: >-
     set BABASHKA_TEST_ENV=jvm
 
-    call script/test.bat
+#   call script/test.bat
 
 # see https://github.com/quarkusio/quarkus/pull/7663
 
@@ -66,13 +66,13 @@ build_script:
 
     bb release-artifact %zip%
 
-    set BABASHKA_EDN=
+    # set BABASHKA_EDN=
 
-    set BABASHKA_TEST_ENV=native
+    # set BABASHKA_TEST_ENV=native
 
-    call script/test.bat
+    # call script/test.bat
 
-    call script/run_lib_tests.bat
+    # call script/run_lib_tests.bat
 
 artifacts:
 - path: babashka-*-windows-amd64.zip
