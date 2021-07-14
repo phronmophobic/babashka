@@ -95,6 +95,9 @@
          (binding [*out* stream]
            (atomic-println (force output_)))))}))
 
+(def default-config (assoc-in timbre/*config* [:appenders :println]
+                              (println-appender {:stream :auto})))
+
 (defn swap-config! [f & args]
   (apply sci/alter-var-root config f args))
 
