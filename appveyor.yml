@@ -66,13 +66,13 @@ build_script:
 
     bb release-artifact %zip%
 
-    # set BABASHKA_EDN=
+#   set BABASHKA_EDN=
 
-    # set BABASHKA_TEST_ENV=native
+#   set BABASHKA_TEST_ENV=native
 
-    # call script/test.bat
+#   call script/test.bat
 
-    # call script/run_lib_tests.bat
+#   call script/run_lib_tests.bat
 
 artifacts:
 - path: babashka-*-windows-amd64.zip
