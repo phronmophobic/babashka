@@ -109,7 +109,7 @@
                                         'info 'infof 'warn 'warnf
                                         'error 'errorf
                                         '-log! 'with-level
-                                        'println-appender 'spit-appender])
+                                        'spit-appender])
          'log! (sci/copy-var log! tns)
          '*config* config
          'swap-config! (sci/copy-var swap-config! tns)
