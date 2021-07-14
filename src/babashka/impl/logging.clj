@@ -1,4 +1,4 @@
-(ns babashka.impl.timbre
+(ns babashka.impl.logging
   (:require [clojure.tools.logging]
             [clojure.tools.logging.impl :as impl]
             [sci.core :as sci]
