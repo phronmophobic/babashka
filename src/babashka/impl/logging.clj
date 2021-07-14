@@ -64,6 +64,37 @@
 
 (def atomic-println @#'appenders/atomic-println)
 
+(defn println-appender
+  "Returns a simple `println` appender for Clojure/Script.
+  Use with ClojureScript requires that `cljs.core/*print-fn*` be set.
+  :stream (clj only) - e/o #{:auto :*out* :*err* :std-err :std-out <io-stream>}."
+
+  ;; Unfortunately no easy way to check if *print-fn* is set. Metadata on the
+  ;; default throwing fn would be nice...
+
+  [& [{:keys [stream] :or {stream :auto}}]]
+  (let [stream
+        (case stream
+          :std-err timbre/default-err
+          :std-out timbre/default-out
+          stream)]
+    {:enabled?   true
+     :async?     false
+     :min-level  nil
+     :rate-limit nil
+     :output-fn  :inherit
+     :fn
+     (fn [data]
+       (let [{:keys [output_]} data
+             stream
+             (case stream
+               :auto  (if (:error-level? data) @sci/err @sci/out)
+               :*out* @sci/out
+               :*err* @sci/err
+               stream)]
+         (binding [*out* stream]
+           (atomic-println (force output_)))))}))
+
 (defn swap-config! [f & args]
   (apply sci/alter-var-root config f args))
 
