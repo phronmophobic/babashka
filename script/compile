@@ -41,6 +41,7 @@ BABASHKA_BINARY=${BABASHKA_BINARY:-"bb"}
 args=("-jar" "$BABASHKA_JAR"
       "-H:Name=$BABASHKA_BINARY"
       "-H:+ReportExceptionStackTraces"
+      --initialize-at-build-time='primitive_math,primitive_math$unuse_primitive_operators,primitive_math$using_primitive_operators_QMARK_,primitive_math$use_primitive_operators,primitive_math$variadic_predicate_proxy,primitive_math$variadic_proxy,primitive_math$unuse_primitive_operators,primitive_math$using_primitive_operators_QMARK_,primitive_math$use_primitive_operators,primitive_math$variadic_predicate_proxy,primitive_math$variadic_proxy'
       # "-H:+PrintAnalysisCallTree"
       # "-H:+DashboardAll"
       # "-H:DashboardDump=reports/dump"
@@ -49,7 +50,12 @@ args=("-jar" "$BABASHKA_JAR"
       "--verbose"
       "--no-fallback"
       "--native-image-info"
-      "$BABASHKA_XMX")
+      --native-compiler-options='/opt/local/lib/libffi.a'
+      -J-Dclojure.spec.skip-macros=true
+      -J-Dclojure.compiler.direct-linking=true
+      -J-Dtech.v3.datatype.graal-native=true
+      # "$BABASHKA_XMX"
+     )
 
 BABASHKA_STATIC=${BABASHKA_STATIC:-}
 BABASHKA_MUSL=${BABASHKA_MUSL:-}

@@ -22,6 +22,7 @@
                  [org.clojure/tools.cli "1.0.206"]
                  [cheshire "5.10.1"]
                  [nrepl/bencode "1.1.0"]
+                 [com.phronemophobic/clj-libffi "1.4"]
                  [borkdude/sci.impl.reflector "0.0.1"]
                  [org.clojure/test.check "1.1.0"]
                  [com.github.clj-easy/graal-build-time "0.1.0"]]
@@ -84,6 +85,7 @@
                                     [com.opentable.components/otj-pg-embedded "0.13.3"]]}]
              :uberjar {:global-vars {*assert* false}
                        :jvm-opts ["-Dclojure.compiler.direct-linking=true"
+                                  "-Dtech.v3.datatype.graal-native=true"
                                   "-Dclojure.spec.skip-macros=true"
                                   "-Dborkdude.dynaload.aot=true"]
                        :main babashka.main

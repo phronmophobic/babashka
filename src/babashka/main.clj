@@ -16,6 +16,8 @@
    [babashka.impl.clojure.stacktrace :refer [stacktrace-namespace]]
    [babashka.impl.clojure.zip :refer [zip-namespace]]
    [babashka.impl.common :as common]
+
+   [babashka.impl.ffi :refer [ffi-namespace]]
    [babashka.impl.curl :refer [curl-namespace]]
    [babashka.impl.data :as data]
    [babashka.impl.datafy :refer [datafy-namespace]]
@@ -348,6 +350,7 @@ Use bb run --help to show this help output.
        'babashka.classpath classpath-namespace
        'clojure.pprint pprint-namespace
        'babashka.curl curl-namespace
+       'babashka.ffi ffi-namespace
        'babashka.fs fs-namespace
        'babashka.pods pods/pods-namespace
        'bencode.core bencode-namespace
